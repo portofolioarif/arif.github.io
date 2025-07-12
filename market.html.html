@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Marketing Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #3b82f6;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        body.dark {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .subtab-content {
+            display: none;
+            animation: slideUp 0.4s ease;
+        }
+        
+        .subtab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        body.dark .skill-bar {
+            background-color: #334155;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 1s ease;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        
+        body.dark .glow {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Dark/Light Toggle -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg">
+        <i class="fas fa-moon dark:hidden text-gray-800"></i>
+        <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+    </button>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="flex flex-col items-center justify-center mb-12">
+            <div class="relative mb-6 w-40 h-40 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg glow mb-6">
+                <img src="aku.jpg" alt="Professional portrait of a creative designer with a modern minimalist background" 
+                     class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400?text=Profile+Photo'">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-emerald-500 mb-2">
+                ARIF SANTOSO
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl">
+             Graphic Designer
+            </p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex justify-center mb-8">
+            <div class="inline-flex rounded-full p-1 bg-gray-100 dark:bg-gray-800 shadow-sm">
+                <button data-tab="biodata" class="tab-button px-6 py-2 rounded-full font-medium transition-all active" onclick="switchTab('biodata')">
+                    Biodata
+                </button>
+                <button data-tab="services" class="tab-button px-6 py-2 rounded-full font-medium transition-all" onclick="switchTab('services')">
+                    
+                </button>
+            </div>
+        </nav>
+
+        <!-- Tab Contents -->
+        <div class="tab-content active" id="biodata-tab">
+            <!-- Biodata Section -->
+            <section class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- About Me -->
+                <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white flex items-center">
+                        <i class="fas fa-user text-blue-500 mr-2"></i> Tentang Saya
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Halo! Saya Arif santoso, Mahasiswa Jurusan matematika Di Universistas Negeri Makassar yang hobi Desain grafis. Saya seorang desainer grafis dengan lebih dari 3 tahun pengalaman menciptakan konten visual yang menarik dan strategi media sosial yang efektif.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-500 w-6 text-center mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Lokasi: Makassar</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 w-6 text-center mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Email: Arifsantoso2223444@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 w-6 text-center mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Telepon: +6282211270726</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-whatsapp text-blue-500 w-6 text-center mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">WhatsApp: +6282211270726</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white flex items-center">
+                        <i class="fas fa-star text-emerald-500 mr-2"></i> Keahlian
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-600 dark:text-gray-300">Corel Draw </span>
+                                <span class="text-gray-500 dark:text-gray-400">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-600 dark:text-gray-300">Canva </span>
+                                <span class="text-gray-500 dark:text-gray-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-600 dark:text-gray-300">Social Media Strategy</span>
+                                <span class="text-gray-500 dark:text-gray-400">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-600 dark:text-gray-300">Content Creation</span>
+                                <span class="text-gray-500 dark:text-gray-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-600 dark:text-gray-300">Logo Spesialist</span>
+                                <span class="text-gray-500 dark:text-gray-400">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
+            </section>
+
+            <!-- Portfolio Gallery -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                    <i class="fas fa-images text-blue-500 mr-2"></i> Portfolio
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="rounded-xl overflow-hidden group relative">
+                        <img src="" alt="Minimalist brand identity design showing logo, business cards and stationary" 
+                             class="w-full h-48 sm:h-56 object-cover transition-all duration-300 group-hover:scale-105"
+                             onerror="this.src='https://via.placeholder.com/600x400?text=Design+Project'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-white font-medium">Design pamflet</h3>
+                        </div>
+                    </div>
+                    <div class="rounded-xl overflow-hidden group relative">
+                        <img src="" alt="Social media post design templates with vibrant colors and modern typography" 
+                             class="w-full h-48 sm:h-56 object-cover transition-all duration-300 group-hover:scale-105"
+                             onerror="this.src='https://via.placeholder.com/600x400?text=Design+Project'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-white font-medium">logo</h3>
+                        </div>
+                    </div>
+                    <div class="rounded-xl overflow-hidden group relative">
+                        <img src="" alt="Digital illustration of a fantasy landscape with vibrant colors and lighting" 
+                             class="w-full h-48 sm:h-56 object-cover transition-all duration-300 group-hover:scale-105"
+                             onerror="this.src='https://via.placeholder.com/600x400?text=Design+Project'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-white font-medium">Digital Illustration</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                    <i class="fas fa-quote-left text-emerald-500 mr-2"></i> Testimoni Klien
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-start mb-4">
+                            <img src="https://placehold.co/" alt="Portrait of a satisfied client in formal business attire" 
+                                 class="w-12 h-12 rounded-full object-cover mr-4"
+                                 onerror="this.src='https://via.placeholder.com/60?text=Client'">
+                            <div>
+                                <h3 class="font-bold text-gray-800 dark:text-white">bang haikal</h3>
+                                <p class="text-blue-500 text-sm">investor</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Desain yang dibuat sangat profesional dan sesuai dengan kebutuhan bisnis saya. Proses pengerjaan cepat dan hasilnya memuaskan."
+                        </p>
+                    </div>
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                        <div class="flex items-start mb-4">
+                            <img src="https://placehold.co/" alt="Portrait of a marketing manager giving a positive review" 
+                                 class="w-12 h-12 rounded-full object-cover mr-4"
+                                 onerror="this.src='https://via.placeholder.com/60?text=Client'">
+                            <div>
+                                <h3 class="font-bold text-gray-800 dark:text-white">azizah</h3>
+                                <p class="text-blue-500 text-sm">owner MHU</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 italic">
+                            "Strategi media sosial yang diberikan sangat membantu meningkatkan engagement di akun kami. Sangat recommended!"
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Tab -->
+        <div class="tab-content" id="services-tab">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-center mb-2 text-gray-800 dark:text-white">
+                    Layanan Profesional
+                </h2>
+                <p class="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Pilih dari berbagai layanan kreatif yang saya tawarkan untuk membantu bisnis Anda berkembang
+                </p>
+                
+                <!-- Service Submenu -->
+                <nav class="flex justify-center my-8">
+                    <div class="inline-flex border-b border-gray-200 dark:border-gray-700">
+                        <button data-subtab="design" class="subtab-button px-6 py-3 font-medium transition-all border-b-2 border-transparent active" onclick="switchSubTab('design')">
+                            <i class="fas fa-palette mr-2"></i> Design Grafis
+                        </button>
+                        <button data-subtab="follower" class="subtab-button px-6 py-3 font-medium transition-all border-b-2 border-transparent" onclick="switchSubTab('follower')">
+                            <i class="fas fa-users mr-2"></i> Follower
+                        </button>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Design Services -->
+            <div class="subtab-content active" id="design-subtab">
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                        <div class="text-4xl text-blue-500 mb-4">
+                            <i class="fas fa-brush"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Logo Design</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Desain logo profesional yang mencerminkan identitas merek Anda dengan konsep unik.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> 3 Konsep awal
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Revisi hingga 3x
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> File master (AI, PSD, PNG)
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-gray-800 dark:text-white">Rp 500.000</span>
+                            <button class="w-full mt-3 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-2 border-blue-500 transform scale-105 glow">
+                        <div class="text-4xl text-blue-500 mb-4">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Social Media Kit</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Paket lengkap design untuk media sosial termasuk feed, story, dan highlight.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> 15 Desain feed
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> 10 Desain story
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Highlight cover
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Revisi 5x
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-gray-800 dark:text-white">Rp 1.200.000</span>
+                            <button class="w-full mt-3 bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-4 rounded-lg transition-colors">
+                                Pilihan Terbaik
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                        <div class="text-4xl text-blue-500 mb-4">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Merchandise Design</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Desain untuk berbagai merchandise seperti kaos, tote bag, mug dan produk lainnya.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> 2 Desain produk
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Mockup profesional
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Revisi 3x
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-gray-800 dark:text-white">Rp 750.000</span>
+                            <button class="w-full mt-3 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 mb-8">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-2/3 mb-4 md:mb-0 md:pr-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Custom Design Project</h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Punya kebutuhan desain khusus? Saya bisa membuat solusi sesuai kebutuhan Anda dengan harga yang dapat dinegosiasikan.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 flex justify-center md:justify-end">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg transition-colors whitespace-nowrap">
+                                Konsultasi Gratis
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Follower Services -->
+            <div class="subtab-content" id="follower-subtab">
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                        <div class="text-4xl text-blue-500 mb-4">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Instagram Follower</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Meningkatkan jumlah follower akun Instagram Anda dengan target audience relevan.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Follower aktif
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Pertumbuhan organik
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Tanpa bot
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-gray-800 dark:text-white">Rp 150.000</span>
+                            <span class="block text-sm text-gray-500 dark:text-gray-400">per 100 follower</span>
+                            <button class="w-full mt-3 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border-2 border-blue-500 transform scale-105 glow">
+                        <div class="text-4xl text-blue-500 mb-4">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">TikTok Follower</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Meningkatkan follower TikTok dengan target audience sesuai niche Anda.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Follower aktif
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Peningkatan engagement
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Tanpa bot
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-gray-800 dark:text-white">Rp 200.000</span>
+                            <span class="block text-sm text-gray-500 dark:text-gray-400">per 100 follower</span>
+                            <button class="w-full mt-3 bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-4 rounded-lg transition-colors">
+                                Pilihan Terbaik
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+                        <div class="text-4xl text-blue-500 mb-4">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">YouTube Subscriber</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Meningkatkan jumlah subscriber channel YouTube Anda dengan cepat dan aman.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Subscriber aktif
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Tanpa drop
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-2"></i> Garansi 30 hari
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-gray-800 dark:text-white">Rp 300.000</span>
+                            <span class="block text-sm text-gray-500 dark:text-gray-400">per 100 subscriber</span>
+                            <button class="w-full mt-3 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-white">FAQ Layanan Follower</h3>
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
+                            <h4 class="font-medium text-gray-800 dark:text-white">Apakah follower yang didapat aktif?</h4>
+                            <p class="text-gray-600 dark:text-gray-300 mt-1">
+                                Ya, semua follower yang kami berikan adalah akun aktif yang akan berinteraksi dengan konten Anda.
+                            </p>
+                        </div>
+                        <div class="border-b border-gray-200 dark:border-gray-700 pb-4">
+                            <h4 class="font-medium text-gray-800 dark:text-white">Berapa lama proses pengiriman?</h4>
+                            <p class="text-gray-600 dark:text-gray-300 mt-1">
+                                Biasanya 24-72 jam tergantung jumlah yang dipesan. Kami akan memberi update progress secara berkala.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800 dark:text-white">Apakah ada garansi?</h4>
+                            <p class="text-gray-600 dark:text-gray-300 mt-1">
+                                Ya, ada garansi 30 hari untuk layanan follower. Jika ada drop signifikan, kami akan melakukan refill.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 rounded-xl p-8 text-center my-12 shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Siap Bekerja Sama?</h2>
+            <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+                Hubungi saya sekarang untuk berdiskusi tentang kebutuhan desain atau layanan media sosialmu. 
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/62895325997882" class="bg-white hover:bg-gray-100 text-blue-600 font-medium py-3 px-6 rounded-lg transition-colors">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+                <a href="mailto:Arifsantoso2223444@email.com" class="bg-blue-800 hover:bg-blue-900 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                    <i class="fas fa-envelope mr-2"></i> Email
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 text-gray-600 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800">
+            <p>© 2023 Arif Santoso. follow now.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle dark/light theme
+        const themeToggle = document.getElementById('theme-toggle');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+        
+        // Tab switching
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                if (button.getAttribute('data-tab') === tabId) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+        
+        // Subtab switching
+        function switchSubTab(subTabId) {
+            // Hide all subtab contents
+            document.querySelectorAll('.subtab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected subtab content
+            document.getElementById(`${subTabId}-subtab`).classList.add('active');
+            
+            // Update subtab buttons
+            document.querySelectorAll('.subtab-button').forEach(button => {
+                if (button.getAttribute('data-subtab') === subTabId) {
+                    button.classList.add('active');
+                    button.classList.add('border-blue-500');
+                    button.classList.remove('border-transparent');
+                } else {
+                    button.classList.remove('active');
+                    button.classList.remove('border-blue-500');
+                    button.classList.add('border-transparent');
+                }
+            });
+        }
+        
+        // Animate skill bars on scroll into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.style.width;
+                    entry.target.style.width = '0';
+                    setTimeout(() => {
+                        entry.target.style.width = width;
+                    }, 100
